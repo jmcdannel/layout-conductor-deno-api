@@ -6,7 +6,7 @@ export async function getAll() {
 }
 
 export async function getById(layoutId) {
-  const layouts = await db.collection('layouts').find({ layoutId }).toArray();
+  const layouts = await db?.collection('layouts')?.find({ layoutId }).toArray();
   return layouts?.[0];
 }
 

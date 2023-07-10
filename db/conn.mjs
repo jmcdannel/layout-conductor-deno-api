@@ -10,12 +10,13 @@ const client = new MongoClient(DB_CONNECTION, {
 });
 
 let conn;
+let db;
+
 try {
   conn = await client.connect();
+  db = await conn.db(DB_NAME);;
 } catch(e) {
   console.error(e);
 }
-
-let db = conn.db(DB_NAME);
 
 export default db;
