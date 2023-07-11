@@ -1,8 +1,8 @@
-import db from '../db/conn.mjs';
+import db from '../conn.mjs';
 
 export async function getAll(layoutId, collectionName = 'layouts') {
   console.log('[MODULE] getAll', layoutId, collectionName);
-  const results = await db.collection(collectionName).find({ layoutId }).toArray();
+  const results = await db?.collection(collectionName)?.find({ layoutId }).toArray();
   return results;
 }
 
@@ -25,7 +25,7 @@ export async function getById(layoutId, id, idField, collectionName) {
         _id: 0
       }
     };
-    const result = await db.collection(collectionName).aggregate( [ query, projection ]).toArray();
+    const result = await db?.collection(collectionName)?.aggregate( [ query, projection ]).toArray();
     return result?.[0]?.['obj']?.[0];
   } catch(e) {
     console.error(e);

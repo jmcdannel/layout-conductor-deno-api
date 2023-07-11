@@ -1,5 +1,5 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import { DB_CONNECTION, DB_NAME } from '../config.js';
+import { DB_CONNECTION, DB_NAME } from './config.js';
 
 const client = new MongoClient(DB_CONNECTION, {
   serverApi: {
@@ -15,8 +15,10 @@ let db;
 try {
   conn = await client.connect();
   db = await conn.db(DB_NAME);;
+  console.log('[CONN] connected', DB_NAME);
 } catch(e) {
-  console.error(e);
+  console.error('[CONN] ERROR:', e, DB_CONNECTION);
+  throw e;
 }
 
 export default db;

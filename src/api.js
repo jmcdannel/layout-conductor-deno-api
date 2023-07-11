@@ -1,7 +1,7 @@
 import { Application } from 'https://deno.land/x/oak/mod.ts';
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
-import router from '../routes.js';
-import { API_PORT } from '../config.js';
+import router from './routes.js';
+import { API_PORT } from './config.js';
 
 const port = API_PORT;
 
@@ -11,7 +11,7 @@ export async function connect() {
     app.use(oakCors());
     app.use(router.routes());
     app.use(router.allowedMethods());
-    console.log('api server connected');
+    console.log('[API]', 'connected', port);
     await app.listen({ port });
   } catch (err) {
     console.error(err);

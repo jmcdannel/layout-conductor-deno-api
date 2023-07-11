@@ -1,4 +1,3 @@
-import { connect as connectApi } from './server/api.js';
-import { start as connectSerial } from './com/serial.js'
+import { connect as connectApi } from './src/api.js';
 
 await connectApi();

@@ -1,5 +1,5 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import { DB_CONNECTION, DB_NAME } from './config.js';
+import { DB_CONNECTION, DB_NAME } from './src/config.js';
 
 export const client = new MongoClient(DB_CONNECTION, {
   serverApi: {

@@ -1,4 +1,4 @@
-import db from '../db/conn.mjs';
+import db from '../conn.mjs';
 
 export async function getAll() {
   const layouts = await db.collection('layouts').find().toArray();
@@ -11,13 +11,13 @@ export async function getById(layoutId) {
 }
 
 export async function handleGetAll({ response }) {
-  console.log('handleGetAll');
+  console.log('[LAYOUTS] handleGetAll');
   response.type = "application/json";
   response.body = await getAll();
 }
 
 export async function handleGetById({ response, params }) { 
-  console.log('handleGetById', params);
+  console.log('[LAYOUTS] handleGetById', params);
   response.type = "application/json";
   response.body = await getById(params.layoutId);
 }
